@@ -5,9 +5,13 @@ import torch.nn.functional as Functional
 def square_distance(src, dst):
     B, N, _ = src.shape
     _, M, _ = dst.shape
+
+    # Actually, the following three lines are the formula of a^2+b^2-2ab*cos(\theta)
+
     dist = -2 * torch.matmul(src, dst.permute(0, 2, 1))
     dist += torch.sum(src ** 2, -1).view(B, N, 1)
     dist += torch.sum(dst ** 2, -1).view(B, 1, M)
+
     return dist
 
 def index_points(points, idx):
