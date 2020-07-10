@@ -1,1 +1,5 @@
 data/
+view-gcn/
+.idea/
+model/__pycache__/
+tools/__pycache__/
