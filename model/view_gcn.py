@@ -95,7 +95,7 @@ class view_GCN(Model):
                         [0, -1, phi/3], [-1/2, -phi/2, phi/3],[-phi/2, -1/2, phi/3],
                         [-1, 0, phi/3], [-phi/2, 1/2, phi/3], [-1/2, phi/2, phi/3],
                         [0, 1 , phi/3], [1/2, phi / 2, phi/3], [phi / 2, 1/2, phi/3]]
-        self.vertices = torch.tensor(vertices).cuda()
+        self.vertices = torch.tensor(vertices, dtype=torch.float32).cuda()
 
         self.LocalGCN1 = LocalGCN(k=4,n_views=self.num_views)
         self.NonLocalMP1 = NonLocalMP(n_view=self.num_views)
